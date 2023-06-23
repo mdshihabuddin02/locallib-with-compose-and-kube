@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: locallib-db
+  template:
+    metadata:
+      labels:
+        app: locallib-db
+    spec:
+      containers:
+        - name: locallib-db
+          image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: DATABASE_USER
+              value: dbshi
+            - name: DATABASE_PASSWORD
+              value: db@127
+            - name: DATABASE_NAME
+              value: lib
+
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-container-pvc
