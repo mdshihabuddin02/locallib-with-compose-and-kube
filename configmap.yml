@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: mysql-db-config
 data:
-  MYSQL_USER: dbshi
-  MYSQL_ROOT_PASSWORD: root
-  MYSQL_PASSWORD: db@127
-  MYSQL_DATABASE: lib
+  MYSQL_USER: value_can_be_replaced
+  MYSQL_ROOT_PASSWORD: value_can_be_replaced
+  MYSQL_PASSWORD: value_can_be_replaced
+  MYSQL_DATABASE: value_can_be_replaced
